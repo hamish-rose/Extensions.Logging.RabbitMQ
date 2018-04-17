@@ -2,6 +2,12 @@
 
 A RabbitMQ logger provider for the Microsoft Extensions Logging framework
 
+## Installation
+
+```
+Install-Package Extensions.Logging.RabbitMQ
+```
+
 ## Usage
 
 Add the rabbit logger to your logging builder during host build up.

@@ -35,14 +35,14 @@ Add JSON config to appsettings.json
 "rabbitlogging": {
     "exchange": "myExchange",
     "routingKey": "myRoutingKey",
-    "applicationName": "myApplication"
-    "minLevel": "Information"
+    "applicationName": "myApplication",
+    "minLevel": "Information",
     "rabbitOptions" : {
       "hostName": "localhost",
       "port" : 5762
       "userName": "guest",
       "password": "guest",
-      "connectionAttempts": 10
+      "connectionAttempts": 10,
       "connectionAttemptDelay": "00:00:05"
       }
   }

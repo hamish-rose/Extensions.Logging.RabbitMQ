@@ -65,9 +65,9 @@ namespace Extensions.Logging.RabbitMQ.UnitTests
 
             IEnumerable<LogMessage> messages = client.Collection.Select(x => x as LogMessage);
 
-            messages.Count(x => x.LogLevel == "Information").Should().Be(1);
-            messages.Count(x => x.LogLevel == "Error").Should().Be(1);
-            messages.Count(x => x.LogLevel == "Trace").Should().Be(1);
+            messages.Count(x => x.LogLevel == LogLevel.Information).Should().Be(1);
+            messages.Count(x => x.LogLevel == LogLevel.Error).Should().Be(1);
+            messages.Count(x => x.LogLevel == LogLevel.Trace).Should().Be(1);
         }
 
         [Fact]

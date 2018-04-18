@@ -9,11 +9,6 @@ namespace Extensions.Logging.RabbitMQ
     public class LogMessage
     {
         /// <summary>
-        /// Gets or sets the event ID
-        /// </summary>
-        public EventId EventId { get; set; }
-
-        /// <summary>
         /// Gets or sets the category name the log was published from
         /// </summary>
         public string CategoryName { get; set; }

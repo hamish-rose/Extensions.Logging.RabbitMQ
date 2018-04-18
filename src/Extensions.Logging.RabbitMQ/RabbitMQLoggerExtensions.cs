@@ -41,7 +41,7 @@ namespace Microsoft.Extensions.Logging
         private static void RegisterServices(IServiceCollection services)
         {
             services.AddSingleton<IConnectionFactory, ResilientConnectionFactory>();
-            services.AddSingleton<IMessagingClient, RabbitMQClient>();
+            services.AddSingleton<IMessagingClient, RabbitMQLoggerClient>();
             services.AddSingleton<ILoggerProvider, RabbitMQLoggerProvider>();
         }
     }

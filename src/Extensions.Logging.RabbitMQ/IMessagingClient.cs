@@ -8,9 +8,8 @@
         /// <summary>
         /// Publish a message
         /// </summary>
-        /// <typeparam name="T"> type of message being published</typeparam>
         /// <param name="routingKey"><see cref="string"/> routing key</param>
-        /// <param name="message"><see cref="T"/> message to be publish</param>
-        void Publish<T>(string routingKey, T message);
+        /// <param name="message"><see cref="LogMessage"/> message to be publish</param>
+        void Publish(string routingKey, LogMessage message);
     }
 }

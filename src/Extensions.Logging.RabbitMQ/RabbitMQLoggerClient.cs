@@ -8,15 +8,15 @@ namespace Extensions.Logging.RabbitMQ
     /// <summary>
     /// RabbitMQ client used to publish log messages to RabbitMQ
     /// </summary>
-    public class RabbitMQClient : IMessagingClient
+    public class RabbitMQLoggerClient : IMessagingClient
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitMQClient"/> class.
+        /// Initializes a new instance of the <see cref="RabbitMQLoggerClient"/> class.
         /// </summary>
         /// <param name="connectionFactory"><see cref="IConnectionFactory"/> rabbitMQ connection factory</param>
         /// <param name="options"><see cref="IOptions{RabbitMQLoggerProviderOptions}"/> options class, configuring the logger provider</param>
         /// <exception cref="ArgumentNullException"> thrown if either constructor parameter is null</exception>
-        public RabbitMQClient(IConnectionFactory connectionFactory, IOptions<RabbitMQLoggerProviderOptions> options)
+        public RabbitMQLoggerClient(IConnectionFactory connectionFactory, IOptions<RabbitMQLoggerProviderOptions> options)
         {
             Options = options.Value ?? throw new ArgumentNullException(nameof(options));
 
@@ -46,9 +46,11 @@ namespace Extensions.Logging.RabbitMQ
         /// <typeparam name="T"> the type of message being published</typeparam>
         /// <param name="routingKey"> the routing key to use</param>
         /// <param name="message"> the message</param>
-        public void Publish<T>(string routingKey, T message)
+        public void Publish(string routingKey, LogMessage message)
         {
-            Model.BasicPublish(Options.Exchange, routingKey, Model.CreateBasicProperties(), JsonSerializer.Serialize(message));
+            IBasicProperties properties = Model.CreateBasicProperties();
+            properties.AppId = message.ApplicationName;
+            Model.BasicPublish(Options.Exchange, routingKey, properties, JsonSerializer.Serialize(message));
         }
     }
 }

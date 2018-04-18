@@ -83,12 +83,11 @@ namespace Extensions.Logging.RabbitMQ
 
             Provider.MessageQueue.Add(new LogMessage()
             {
-                EventId = eventId,
                 CategoryName = CategoryName,
                 LogLevel = logLevel,
                 ApplicationName = ApplicationName,
                 Message = builder.ToString(),
-                Timestamp = DateTime.UtcNow
+                Timestamp = DateTime.UtcNow,
             });
         }
     }

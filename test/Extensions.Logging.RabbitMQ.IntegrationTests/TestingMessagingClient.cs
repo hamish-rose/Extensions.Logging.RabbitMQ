@@ -8,7 +8,7 @@ namespace Extensions.Logging.RabbitMQ.IntegrationTests
     {
         internal BlockingCollection<object> Collection { get; } = new BlockingCollection<object>();
 
-        public void Publish<T>(string routingKey, T message)
+        public void Publish(string routingKey, LogMessage message)
         {
             Collection.Add(message);
         }

@@ -17,7 +17,7 @@ namespace Extensions.Logging.RabbitMQ.IntegrationTests
         private IHost Host { get; }
 
         [Fact]
-        public void LogExpectedNumberOfTimesShouldReflectOnRabbit()
+        public void LoggerForwardsRequestsToMessagingClient()
         {
             ILogger<RabbitLoggingHostIntegrationTests> logger = Host.Services.GetRequiredService<ILogger<RabbitLoggingHostIntegrationTests>>();
             IMessagingClient client = Host.Services.GetRequiredService<IMessagingClient>();
